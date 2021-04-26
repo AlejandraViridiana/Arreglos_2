@@ -1,19 +1,77 @@
-// Arreglos2.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
-//
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-#include <iostream>
-
-int main()
+namespace Arreglos_2
 {
-    std::cout << "Hello World!\n";
+    class Program
+    {
+        //La empresa Apple cuenta con 2 turnos (matutino y vespertino) 
+        //La plantilla es de 10 empleados (5 en el turno matutino y 5 en el turno vespertino)
+        //Desarrollar un programa que almacene los sueldos de los empleados agrupados por turno.
+        //Y calcular  el total de gastos en sueldos por turno
+        //Vector unidimensional de tipo Float
+        private float[] turnoMatutino;
+        private float[] turnoVespertino;
+
+        public void Cargar()
+        {
+            string lineaCaptura;
+            turnoMatutino = new float[4]; //Asignar al vector longitud de 4
+            turnoVespertino = new float[4]; //Asignar al vector longitud de 4
+            //Turno Matutino
+            Console.WriteLine("Sueldos de empleados del turno Matutino");
+            for (int i = 0; i < 4; i++)
+            {
+                Console.WriteLine("Ingrese el sueldo " + (i + 1) + ": ");
+                lineaCaptura = Console.ReadLine();
+                turnoMatutino[i] = float.Parse(lineaCaptura);//Asignar valores al vector
+            }
+
+            //Turno Vespertino
+            Console.WriteLine("Sueldos de empleados del turno Vespertino");
+            for (int i = 0; i < 4; i++)
+            {
+                Console.WriteLine("Ingrese el sueldo " + (i + 1) + ": ");
+                lineaCaptura = Console.ReadLine();
+                turnoVespertino[i] = float.Parse(lineaCaptura);//Asignar valores al vector
+            }
+        }
+
+        public void CalcularGastos()
+        {
+            float sueldosMatutino = 0;
+            float sueldosVespertino = 0;
+
+            for (int i = 0; i < 4; i++)
+            {
+                sueldosMatutino = sueldosMatutino + turnoMatutino[i];
+            }
+
+
+            for (int i = 0; i < 4; i++)
+            {
+                sueldosVespertino = sueldosVespertino + turnoVespertino[i];
+            }
+
+            Console.WriteLine("Total de Gastos en sueldo del turno matutino" + sueldosMatutino);
+            Console.WriteLine("Total de Gastos en sueldo del turno Vespertino" + sueldosVespertino);
+            Console.ReadKey();
+
+
+        }
+
+
+
+
+        static void Main(string[] args)
+        {
+            Program sueldos = new Program();
+            sueldos.Cargar();
+            sueldos.CalcularGastos();
+        }
+    }
 }
 
-// Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
-// Depurar programa: F5 o menú Depurar > Iniciar depuración
-
-// Sugerencias para primeros pasos: 1. Use la ventana del Explorador de soluciones para agregar y administrar archivos
-//   2. Use la ventana de Team Explorer para conectar con el control de código fuente
-//   3. Use la ventana de salida para ver la salida de compilación y otros mensajes
-//   4. Use la ventana Lista de errores para ver los errores
-//   5. Vaya a Proyecto > Agregar nuevo elemento para crear nuevos archivos de código, o a Proyecto > Agregar elemento existente para agregar archivos de código existentes al proyecto
-//   6. En el futuro, para volver a abrir este proyecto, vaya a Archivo > Abrir > Proyecto y seleccione el archivo .sln
